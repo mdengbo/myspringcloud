@@ -1,0 +1,37 @@
+mycloud:
+  port:
+    eureka: 8761
+  hostname:
+    eureka: 127.0.0.1
+
+server:
+  port: 8761
+
+spring:
+  application:
+    name: springcloud-eurake
+
+security:
+  basic:
+    enabled: true
+  user:
+    name: eureka
+    password: eureka
+    role: -USER
+
+eureka:
+  instance:
+    hostname: localhost
+#注册到此eureka 需要秘钥的两种方式中的   方式1
+    metadata-map:
+      user.name: ${security.user.name}
+      user.password: ${security.user.password}
+  client:
+    registerWithEureka: false # 禁止向服务注册自己
+    fetchRegistry: false #
+    serviceUrl:
+#注册到此eureka 需要秘钥的两种方式 a
+#  方式 1
+      defaultZone: http://${mycloud.hostname.eureka}:${mycloud.port.eureka}/eureka/
+#  方式 2
+#      defaultZone: http://${security.user.name}:${security.user.password}@${eureka.instance.hostname}:${server.port}/eureka/
