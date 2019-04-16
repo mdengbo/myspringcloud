@@ -26,6 +26,8 @@
 		<module>springcloud-provide</module>
 		<module>springcloud-consumer</module>
 		<module>springcloud-consumer-ribbon</module>
+		<module>springcloud-consumer-ribbon-properties</module>
+		<module>springcloud-consumer-ribbon-without-eureka</module>
 	</modules>
 	<dependencyManagement>
 		<dependencies>
