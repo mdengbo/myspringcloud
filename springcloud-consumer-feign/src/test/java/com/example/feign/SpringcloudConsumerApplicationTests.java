@@ -1,4 +1,4 @@
-package com.example.springcloudconsumerRibbon;
+package com.example.feign;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

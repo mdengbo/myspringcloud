@@ -1,0 +1,43 @@
+mycloud:
+  port:
+    eureka: 8761
+  hostname:
+    eureka: 127.0.0.1
+
+spring:
+  application:
+    name: springcloud-consumer-feign #指定注册的服务名  建议小写
+
+server:
+  port: 8768
+
+security:
+  basic:
+    enabled: true
+  user:
+    name: eureka
+    password: eureka
+    role: -USER
+
+eureka:
+  instance:
+    prefer-ip-address: true #当鼠标放置 注册列表  左下角展示ip  地址就可以将IP注册到Eureka Server上，而如果不配置就是机器的主机名 。
+    #${spring.cloud.client.ip-address} 代表注册的 ip地址
+    #注册到服务上的 status 状态列表 名字   默认格式： 主机名：应用名称：端口 ${spring.application.name}:${spring.application.instance-id}${server.port}
+    instance-id: ${spring.application.name}:${server.port}
+#    hostname:  user  #和上面的prefer-ip-address 和  instance-id  作为二选一选用  作用一样 user:port
+  client:
+    health-check:
+      enable: true
+    serviceUrl:
+      defaultZone: http://${security.user.name}:${security.user.password}@${mycloud.hostname.eureka}:${mycloud.port.eureka}/eureka/
+
+# 解决第一次请求报超时异常的方案：第一次请求初始化时  大概需要 1 second 时间  就会引发timeout 现象
+hystrix.command.default.execution.isolation.thread.timeoutInMilliseconds: 5000
+# 或者：
+# hystrix.command.default.execution.timeout.enabled: false
+# 或者：
+
+# 超时的issue：https://github.com/spring-cloud/spring-cloud-netflix/issues/768
+# 超时的解决方案： http://stackoverflow.com/questions/27375557/hystrix-command-fails-with-timed-out-and-no-fallback-available
+# hystrix配置： https://github.com/Netflix/Hystrix/wiki/Configuration#execution.isolation.thread.timeoutInMilliseconds
