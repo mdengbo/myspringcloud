@@ -6,7 +6,7 @@ mycloud:
 
 spring:
   application:
-    name: springcloud-consumer #指定注册的服务名  建议小写
+    name: springcloud-rest #指定注册的服务名  建议小写
 
 server:
   port: 8763

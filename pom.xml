@@ -28,6 +28,7 @@
 		<module>springcloud-consumer-ribbon</module>
 		<module>springcloud-consumer-ribbon-properties</module>
 		<module>springcloud-consumer-ribbon-without-eureka</module>
+		<module>springcloud-consumer-feign</module>
 	</modules>
 	<dependencyManagement>
 		<dependencies>

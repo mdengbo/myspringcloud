@@ -6,7 +6,7 @@ mycloud:
 
 spring:
   application:
-    name: springcloud-consumer-ribbon #指定注册的服务名  建议小写
+    name: springcloud-rest-ribbon #指定注册的服务名  建议小写
 
 server:
   port: 8764

@@ -37,7 +37,7 @@
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-eureka-server</artifactId>
 		</dependency>
-		<!--引入 security 注入到eureka 验证问题-->
+		<!--引入 security 注入到eureka 验证问题  如果没有配置  user  pwd 他会自动设置一个随机的  用户为哦 user 密码不定的 账号 。密码可在控制台 找到-->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-security</artifactId>
