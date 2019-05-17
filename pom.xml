@@ -31,6 +31,7 @@
 		<module>springcloud-consumer-ribbon-without-eureka</module>
 		<module>springcloud-consumer-feign</module>
 		<module>springcloud-consumer-feign-with-hystrix</module>
+		<module>springcloud-consumer-feign-with-hystrix-factory</module>
 	</modules>
 	<dependencyManagement>
 		<dependencies>
