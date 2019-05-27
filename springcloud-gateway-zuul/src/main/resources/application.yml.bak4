@@ -6,10 +6,10 @@ mycloud:
 
 spring:
   application:
-    name: springcloud-provider-mdb #指定注册的服务名  建议小写  mdb可作为后台的版本控制
+    name: springcloud-gateway-zuul #指定注册的服务名  建议小写
 
 server:
-  port: 8763
+  port: 8040
 
 security:
   basic:
@@ -25,7 +25,28 @@ eureka:
     instance-id: ${spring.application.name}:${server.port} #注册到服务上的 status 状态列表 名字   默认格式： 主机名：应用名称：端口 ${spring.application.name}:${spring.application.instance-id}${server.port}
     appname: ${spring.application.name} #默认使用的是 ${spring.application.name} 如果配置的话 注册首页 Application 下将会以appname 信息展示
   client:
-    health-check:
-      enable: true
+#    health-check:
+#      enable: true
     serviceUrl:
       defaultZone: http://${security.user.name}:${security.user.password}@${mycloud.hostname.eureka}:${mycloud.port.eureka}/eureka/
+zuul:
+  routes:
+    abc:  # abc 可以顺便定义 但要唯一
+      path: /users/**
+      serviceId: springcloud-provider
+  prefix: /api #提供统一的访问前缀  localhost:port/api/xx
+#  strip-prefix: false #是否带前缀请求  默认为 true 即是：不带 前缀请求的    当遇到默写应用 刚好就是localhost:port/ 时 应用
+                        #这里的stripPrefix默认为true，也就是所有/demo/xxxx的请求转发给http://demo.com.cn/xxxx ,去除掉demo前缀
+
+
+ribbon:
+  eureka:
+    enabled: false
+
+springcloud-provider: # 调用的服务的  serviceId
+  ribbon:
+    listOfServers: http://192.168.1.39:8762, http://192.168.1.39:8763
+
+logging:
+  level:
+    com.netflix: debug

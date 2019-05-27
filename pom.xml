@@ -23,6 +23,7 @@
 
 	<modules>
 		<module>springcloud-eureka</module>
+		<module>springcloud-hystrix-turbine</module>
 		<module>springcloud-provide</module>
 		<module>springcloud-consumer</module>
 		<module>springcloud-consumer-with-hystrix</module>
@@ -32,6 +33,8 @@
 		<module>springcloud-consumer-feign</module>
 		<module>springcloud-consumer-feign-with-hystrix</module>
 		<module>springcloud-consumer-feign-with-hystrix-factory</module>
+		<module>springcloud-gateway-zuul</module>
+		<module>springcloud-gateway-zuul-reg-exp</module>
 	</modules>
 	<dependencyManagement>
 		<dependencies>

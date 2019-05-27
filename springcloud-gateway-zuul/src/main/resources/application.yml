@@ -6,10 +6,10 @@ mycloud:
 
 spring:
   application:
-    name: springcloud-provider-mdb #指定注册的服务名  建议小写  mdb可作为后台的版本控制
+    name: springcloud-gateway-zuul #指定注册的服务名  建议小写
 
 server:
-  port: 8763
+  port: 8040
 
 security:
   basic:
@@ -25,7 +25,13 @@ eureka:
     instance-id: ${spring.application.name}:${server.port} #注册到服务上的 status 状态列表 名字   默认格式： 主机名：应用名称：端口 ${spring.application.name}:${spring.application.instance-id}${server.port}
     appname: ${spring.application.name} #默认使用的是 ${spring.application.name} 如果配置的话 注册首页 Application 下将会以appname 信息展示
   client:
-    health-check:
-      enable: true
+#    health-check:
+#      enable: true
     serviceUrl:
       defaultZone: http://${security.user.name}:${security.user.password}@${mycloud.hostname.eureka}:${mycloud.port.eureka}/eureka/
+zuul:
+  routes:
+    springcloud-provider:  # abc 可以顺便定义 但要唯一
+      path: /users/**
+
+
