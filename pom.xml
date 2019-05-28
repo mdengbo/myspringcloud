@@ -35,6 +35,7 @@
 		<module>springcloud-consumer-feign-with-hystrix-factory</module>
 		<module>springcloud-gateway-zuul</module>
 		<module>springcloud-gateway-zuul-reg-exp</module>
+		<module>springcloud-file-upload</module>
 	</modules>
 	<dependencyManagement>
 		<dependencies>

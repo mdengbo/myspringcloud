@@ -30,8 +30,13 @@ eureka:
     serviceUrl:
       defaultZone: http://${security.user.name}:${security.user.password}@${mycloud.hostname.eureka}:${mycloud.port.eureka}/eureka/
 zuul:
+#  servlet-path: /         # 默认是/zuul , 上传文件需要加/zuul前缀才不会出现乱码，这个改成/ 即可不加前缀  当上传的是大文件类型时， 可通过 /zuul/** 绕过 http 请求的文件大小限制 eg; localhost:8040/zuul/service_id/upload
   routes:
     springcloud-provider:  # abc 可以顺便定义 但要唯一
       path: /users/**
-
-
+    springcloud-file-upload:
+      path: /file/**
+hystrix.command.default.execution.isolation.thread.timeoutInMilliseconds: 60000  # 熔断超时 ribbon和hystrix是同时生效的，哪个值小哪个生效
+ribbon:
+  ConnectTimeout: 3000  # [ribbon超时时间]大于[熔断超时],那么会先走熔断，相当于你配的ribbon超时就不生效了  ribbon和hystrix是同时生效的，哪个值小哪个生效
+  ReadTimeout: 60000
