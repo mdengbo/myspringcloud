@@ -1,0 +1,13 @@
+server:
+  port: 8080
+spring:
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://gitee.com/madengbo/config-repro-demo      # 公用 当无法找到下面的 匹配模式时  会直接取用 共用的
+          repos:
+            simple: https://gitee.com/madengbo/simple
+            special:
+              pattern: special*/dev*,special*/test*   # {application}/{profile}
+              uri: https://gitee.com/madengbo/special

@@ -1,0 +1,11 @@
+spring:  #bootstrap.yml 比 application.yml 加入spring 容器的时间要早  参数史丹利的   当application中在重新对同一属性赋值时  值是不会改变的
+  cloud:
+    config:
+      uri: http://localhost:8080
+      profile: dev
+      label: master   # 当configserver的后端存储是Git时，默认就是master 
+  application:
+    name: foobar
+    
+    
+    
