@@ -5,12 +5,12 @@ spring:
         enabled: true
         service-id: microservice-config-server-eureka
   application:
-    name: foobar
+    name: foobar-dev
     
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://user:password123@localhost:8761/eureka
+      defaultZone: http://eureka:eureka@localhost:8761/eureka
   instance:
     prefer-ip-address: true
     
